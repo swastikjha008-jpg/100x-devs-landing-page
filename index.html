@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>100xDevs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#150861",
+              ink: "#1f1f1f",
+              muted: "#f4f4f5",
+              softText: "#6b7280",
+              teal: "#10B0A7"
+            },
+            fontFamily: {
+              sans: ["Lato", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+              display: ["Poppins", "Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+            },
+            boxShadow: {
+              card: "0 12px 34px rgba(15, 23, 42, 0.08)",
+              lift: "0 22px 55px rgba(21, 8, 97, 0.18)"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;900&family=Poppins:wght@600;700;800&display=swap");
+      body { background: #ffffff; }
+      .primary-gradient {
+        background: linear-gradient(90deg, #202230 0%, #293c69 48%, #32549f 100%);
+      }
+    </style>
+  </head>
+
+  <body class="font-sans text-primary antialiased">
+    <header class="sticky top-0 z-50 border-b border-neutral-200 bg-white">
+      <nav class="mx-auto hidden w-full max-w-7xl items-center justify-between p-4 lg:flex">
+        <div class="flex items-center gap-8">
+          <a href="#" class="font-display text-xl font-bold tracking-tight text-ink">
+            100<span class="text-red-600">x</span>Devs
+          </a>
+          <a href="#" class="font-medium text-primary hover:text-primary/70">Home</a>
+          <a href="#courses" class="font-medium text-primary hover:text-primary/70">Courses</a>
+          <a href="#store" class="font-medium text-primary hover:text-primary/70">Store</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="relative w-72 text-softText">
+            <svg class="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
+              <path d="m21 21-4.3-4.3" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input class="h-9 w-full rounded-md border border-neutral-200 bg-transparent py-1 pl-9 pr-3 text-sm outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/10" placeholder="Type to search" type="search" />
+          </label>
+          <button class="h-9 rounded-md border border-primary/30 bg-white px-6 text-sm font-medium text-primary shadow-sm hover:bg-neutral-100">Sign up</button>
+          <button class="h-9 rounded-md bg-primary px-6 text-sm font-medium text-white shadow-sm hover:bg-primary/90">Log in</button>
+        </div>
+      </nav>
+
+      <div class="flex h-16 items-center justify-between px-4 sm:px-6 lg:hidden">
+        <a href="#" class="font-display text-xl font-bold tracking-tight text-ink">
+          100<span class="text-red-600">x</span>Devs
+        </a>
+        <button id="menuToggle" class="grid size-9 place-items-center rounded-md bg-primary text-white" aria-label="Toggle menu">
+          <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileOverlay" class="pointer-events-none fixed inset-0 z-40 bg-black/50 opacity-0 transition lg:hidden"></div>
+      <aside id="mobilePanel" class="fixed right-0 top-0 z-50 h-full w-full translate-x-full bg-white transition duration-300 lg:hidden">
+        <div class="flex items-center justify-between border-b border-neutral-200 px-4 py-4">
+          <a href="#" class="font-display text-xl font-bold tracking-tight text-ink">
+            100<span class="text-red-600">x</span>Devs
+          </a>
+          <button id="menuClose" class="rounded-md px-4 py-2 text-primary hover:bg-neutral-100">Close</button>
+        </div>
+        <div class="flex flex-col gap-6 px-4 py-6">
+          <input class="h-10 w-full rounded-md border border-neutral-200 px-4 outline-none" placeholder="Type to search" type="search" />
+          <a class="rounded-md bg-muted px-3 py-2 font-medium" href="#">Home</a>
+          <a class="rounded-md bg-muted px-3 py-2 font-medium" href="#courses">Courses</a>
+          <a class="rounded-md bg-muted px-3 py-2 font-medium" href="#store">Store</a>
+          <button class="h-10 rounded-md border border-primary/30 text-sm font-medium text-primary">Sign up</button>
+          <button class="h-10 rounded-md bg-primary text-sm font-medium text-white">Log in</button>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <div class="mx-auto flex w-full max-w-7xl flex-col gap-20 px-4 py-20 lg:px-6">
+        <section class="grid grid-cols-1 items-center gap-12 sm:grid-cols-2">
+          <div class="flex flex-col gap-y-4">
+            <div class="mx-auto flex w-fit items-center gap-2 rounded-full border border-dashed border-neutral-400 px-4 py-1.5 sm:mx-0">
+              <span class="size-3 rounded-full bg-teal"></span>
+              <span class="text-sm text-neutral-900">Join 100,000+ enrolled students today</span>
+            </div>
+            <h1 class="text-center font-display text-4xl font-semibold leading-[0.96] tracking-tight sm:text-left sm:text-6xl md:text-7xl">
+              Master Full Stack Development
+            </h1>
+            <p class="text-center leading-7 tracking-wide text-softText sm:text-left">
+              Master Full Stack Development through hands-on open source projects. Join a community of developers transforming their careers with practical, real-world programming skills.
+            </p>
+            <div class="flex items-center justify-center gap-4 sm:justify-start">
+              <a href="#why" class="rounded-md border border-primary/30 bg-white px-5 py-3 font-medium text-primary shadow-sm hover:bg-neutral-100">Learn more</a>
+              <a href="#courses" class="rounded-md bg-primary px-5 py-3 text-white shadow-sm hover:bg-primary/90">Explore Courses</a>
+            </div>
+          </div>
+          <img src="assets/hero-100x.png" alt="100xDevs hero" class="h-auto w-full max-w-[540px] justify-self-end object-contain" />
+        </section>
+
+        <section class="rounded-lg rounded-tr-[140px] bg-primary py-8">
+          <div class="grid grid-cols-1 divide-y-2 divide-white/80 px-4 py-4 sm:grid-cols-2 sm:divide-x-2 sm:divide-y-0 md:grid-cols-3">
+            <div class="flex items-center gap-5 px-5 py-5 md:px-8">
+              <div class="-mt-4 rounded-bl-[10px] rounded-tr-[10px] bg-[#BABAFFB2] p-2.5">👤</div>
+              <div><div class="text-4xl font-semibold text-neutral-200">27</div><div class="text-neutral-200/70">Students cracked GSoC 2025</div></div>
+            </div>
+            <div class="flex items-center gap-5 px-5 py-5 md:px-8">
+              <div class="-mt-4 rounded-bl-[10px] rounded-tr-[10px] bg-[#BABAFFB2] p-2.5">🏆</div>
+              <div><div class="text-4xl font-semibold text-neutral-200">$150K</div><div class="text-neutral-200/70">Highest International package</div></div>
+            </div>
+            <div class="flex items-center gap-5 px-5 py-5 md:px-8">
+              <div class="-mt-4 rounded-bl-[10px] rounded-tr-[10px] bg-[#BABAFFB2] p-2.5">💼</div>
+              <div><div class="text-4xl font-semibold text-neutral-200">200+</div><div class="text-neutral-200/70">High paying internships confirmed</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="why" class="flex flex-col gap-8">
+          <div class="mx-auto max-w-3xl space-y-3 text-center">
+            <p class="font-semibold text-primary/70">Job ready skills that matter</p>
+            <h2 class="font-display text-3xl font-bold tracking-tight md:text-5xl">
+              Master development through real-world applications, not tutorials
+            </h2>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="rounded-xl border border-neutral-200 bg-white p-6 shadow-card">
+              <h3 class="text-xl font-bold">Full Stack Development</h3>
+              <p class="mt-3 leading-7 text-softText">Build modern frontends, scalable backends, APIs, databases, auth flows, and production deployments.</p>
+            </article>
+            <article class="rounded-xl border border-neutral-200 bg-white p-6 shadow-card">
+              <h3 class="text-xl font-bold">Real-World Projects</h3>
+              <p class="mt-3 leading-7 text-softText">Ship practical projects that look and behave like the kind of software teams actually maintain.</p>
+            </article>
+            <article class="rounded-xl border border-neutral-200 bg-white p-6 shadow-card">
+              <h3 class="text-xl font-bold">Open Source Contributions</h3>
+              <p class="mt-3 leading-7 text-softText">Learn how to read real repos, raise useful PRs, and collaborate beyond your own machine.</p>
+            </article>
+            <article class="rounded-xl border border-neutral-200 bg-white p-6 shadow-card">
+              <h3 class="text-xl font-bold">Production Ready</h3>
+              <p class="mt-3 leading-7 text-softText">Go beyond toy apps with reliability, architecture, debugging, and deploy-ready thinking.</p>
+            </article>
+            <article class="rounded-xl border border-neutral-200 bg-white p-6 shadow-card">
+              <h3 class="text-xl font-bold">DevOps & Deployment</h3>
+              <p class="mt-3 leading-7 text-softText">Understand containers, CI/CD, cloud basics, monitoring, and how software reaches users.</p>
+            </article>
+            <article class="rounded-xl border border-neutral-200 bg-white p-6 shadow-card">
+              <h3 class="text-xl font-bold">Job Ready Portfolio</h3>
+              <p class="mt-3 leading-7 text-softText">Graduate with projects, stories, and enough technical confidence to explain your work clearly.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="relative">
+            <img src="assets/cib1.svg" alt="" class="absolute right-4 top-2 hidden w-20 lg:block" />
+            <img src="assets/cib2.svg" alt="" class="absolute bottom-8 left-8 hidden w-24 lg:block" />
+            <img src="assets/hero-100x.png" alt="Mentor graphic" class="mx-auto w-full max-w-[470px]" />
+          </div>
+          <div class="space-y-5">
+            <p class="font-semibold text-primary/70">Personally mentoring India's next 100x engineers</p>
+            <h2 class="font-display text-3xl font-bold tracking-tight md:text-5xl">
+              Taking you from 1x to 100x through practical projects and real-world open source
+            </h2>
+            <p class="leading-7 text-softText">
+              Learn directly from engineering experience, live implementation, and structured cohorts designed to move you from watching tutorials to building production-grade systems.
+            </p>
+            <a href="#courses" class="inline-flex rounded-md bg-primary px-5 py-3 text-white shadow-sm hover:bg-primary/90">Explore Cohorts</a>
+          </div>
+        </section>
+      </div>
+
+      <section id="courses" class="w-full bg-primary py-20">
+        <div class="mx-auto max-w-7xl">
+          <h2 class="mb-12 px-5 text-center font-display text-3xl font-bold text-white sm:text-left md:text-5xl">Featured Cohorts</h2>
+
+          <div class="grid grid-cols-1 gap-6 px-5 md:grid-cols-2 lg:grid-cols-3">
+            <article class="overflow-hidden rounded-xl bg-white shadow-lift">
+              <img src="assets/course-combined.jpeg" alt="100xSchool Combined Bootcamp" class="aspect-video w-full object-cover" />
+              <div class="space-y-4 p-5">
+                <p class="text-amber-400">★★★★★ <span class="ml-2 text-xs text-softText">(34)</span></p>
+                <h3 class="text-xl font-bold">100xSchool Combined Bootcamp</h3>
+                <p class="text-sm leading-6 text-softText">Web dev, DevOps, Machine Learning and AI, Web3, and DSA in one combined track.</p>
+                <p><span class="text-2xl font-bold">₹5,999</span> <span class="text-sm text-softText line-through">₹8,999</span></p>
+                <a class="block rounded-md bg-primary px-4 py-3 text-center text-sm font-semibold text-white" href="#">View Details</a>
+              </div>
+            </article>
+
+            <article class="overflow-hidden rounded-xl bg-white shadow-lift">
+              <img src="assets/course-webdev-devops.jpg" alt="Web Dev and DevOps Bootcamp" class="aspect-video w-full object-cover" />
+              <div class="space-y-4 p-5">
+                <p class="text-amber-400">★★★★★ <span class="ml-2 text-xs text-softText">(34)</span></p>
+                <h3 class="text-xl font-bold">Web Dev + Devops Bootcamp</h3>
+                <p class="text-sm leading-6 text-softText">Web dev and DevOps with TypeScript, MERN stack, deployments, and system design.</p>
+                <p><span class="text-2xl font-bold">₹3,999</span> <span class="text-sm text-softText line-through">₹5,999</span></p>
+                <a class="block rounded-md bg-primary px-4 py-3 text-center text-sm font-semibold text-white" href="#">View Details</a>
+              </div>
+            </article>
+
+            <article class="overflow-hidden rounded-xl bg-white shadow-lift">
+              <img src="assets/course-web3.jpg" alt="Web3 Bootcamp" class="aspect-video w-full object-cover" />
+              <div class="space-y-4 p-5">
+                <p class="text-amber-400">★★★★★ <span class="ml-2 text-xs text-softText">(34)</span></p>
+                <h3 class="text-xl font-bold">Web3 Bootcamp</h3>
+                <p class="text-sm leading-6 text-softText">Complete Solana and Web3 Bootcamp focused on programs, smart contracts, and apps.</p>
+                <p><span class="text-2xl font-bold">₹3,999</span> <span class="text-sm text-softText line-through">₹5,999</span></p>
+                <a class="block rounded-md bg-primary px-4 py-3 text-center text-sm font-semibold text-white" href="#">View Details</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-20 lg:px-6">
+        <h2 class="font-display text-3xl font-bold tracking-tight md:text-5xl">Listen to our Podcasts</h2>
+        <p class="mt-3 max-w-3xl leading-7 text-softText">Unfiltered discussions on engineering, startups, and career growth with industry experts and successful developers</p>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <a href="#" class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-card">
+            <img src="assets/podcast-1.jpg" alt="Podcast thumbnail" class="aspect-video w-full object-cover" />
+            <h3 class="p-5 text-lg font-bold">How a 21-Year-Old Got an ₹80 LPA Offer (Before Degree!)</h3>
+          </a>
+          <a href="#" class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-card">
+            <img src="assets/podcast-2.jpg" alt="Podcast thumbnail" class="aspect-video w-full object-cover" />
+            <h3 class="p-5 text-lg font-bold">$25000 Bug Bounty, $100k Offer as a Solana Engineer</h3>
+          </a>
+          <a href="#" class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-card">
+            <img src="assets/podcast-3.jpg" alt="Podcast thumbnail" class="aspect-video w-full object-cover" />
+            <h3 class="p-5 text-lg font-bold">How He Cracked A 40Lakhs Remote Coding Job (Complete Story)</h3>
+          </a>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-16 lg:px-6">
+        <div class="primary-gradient overflow-hidden rounded-3xl px-8 md:px-16 lg:px-20">
+          <div class="flex flex-col items-center gap-8 lg:flex-row">
+            <div class="flex-1 space-y-6 py-12 md:py-16">
+              <h2 class="font-display text-3xl font-bold text-white md:text-5xl">A Community That Has Your Back</h2>
+              <ul class="space-y-3 text-white/90">
+                <li>• Active Discord with 24/7 community support</li>
+                <li>• Collaborate on open source and build together</li>
+                <li>• Weekly study groups and peer code reviews</li>
+                <li>• Job referrals and opportunity sharing</li>
+              </ul>
+            </div>
+            <img src="assets/community1.png" alt="Community collage" class="h-auto w-full flex-1 object-contain" />
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <img src="assets/community2.png" alt="Community event" class="aspect-[4/3] rounded-xl object-cover" />
+          <img src="assets/community3.png" alt="Community event" class="aspect-[4/3] rounded-xl object-cover" />
+          <img src="assets/community4.png" alt="Community event" class="aspect-[4/3] rounded-xl object-cover" />
+          <img src="assets/community5.png" alt="Community event" class="aspect-[4/3] rounded-xl object-cover" />
+        </div>
+      </section>
+
+      <section class="bg-muted">
+        <div class="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-16">
+          <div class="text-center">
+            <h2 class="font-display text-3xl font-bold md:text-5xl">FAQs</h2>
+            <p class="mt-2 text-softText">Get your questions answered</p>
+          </div>
+
+          <details class="border-b border-neutral-200 py-4" open>
+            <summary class="cursor-pointer text-lg font-bold">What makes 100xDevs different from other coding platforms?</summary>
+            <p class="mt-3 leading-7 text-softText">No compromises. With 100xDevs, you get the power of building production-ready applications.</p>
+          </details>
+          <details class="border-b border-neutral-200 py-4">
+            <summary class="cursor-pointer text-lg font-bold">Do I need prior coding experience to join?</summary>
+            <p class="mt-3 leading-7 text-softText">No prior experience is required. The courses are designed to take you from beginner to advanced levels.</p>
+          </details>
+          <details class="border-b border-neutral-200 py-4">
+            <summary class="cursor-pointer text-lg font-bold">What kind of support can I expect?</summary>
+            <p class="mt-3 leading-7 text-softText">Community support, weekly study groups, peer code reviews, and mentorship opportunities.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="store" class="mx-auto max-w-5xl px-4 py-16">
+        <div class="rounded-3xl border border-neutral-200 bg-white p-8 shadow-card md:p-10">
+          <div class="grid gap-8 md:grid-cols-[1fr_0.9fr] md:items-center">
+            <div>
+              <h2 class="font-display text-3xl font-bold md:text-4xl">Having doubts? Let's get in touch!</h2>
+              <p class="mt-3 text-softText">Send us your queries and we'll get back to you soon.</p>
+            </div>
+            <form class="grid gap-3">
+              <input class="h-11 rounded-md border border-neutral-200 px-4 outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/10" placeholder="Your email" type="email" />
+              <textarea class="min-h-28 rounded-md border border-neutral-200 px-4 py-3 outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/10" placeholder="Your query"></textarea>
+              <button type="button" class="h-11 rounded-md bg-primary font-semibold text-white">Submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-neutral-200 bg-white">
+      <div class="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-8 text-sm text-softText sm:flex-row sm:items-center sm:justify-between lg:px-6">
+        <div>
+          <a href="#" class="font-display text-xl font-bold tracking-tight text-ink">
+            100<span class="text-red-600">x</span>DEVS
+          </a>
+          <p class="mt-2">2026 100xDevs. All rights reserved.</p>
+        </div>
+        <div class="flex flex-wrap gap-5">
+          <a class="hover:text-primary" href="#">Terms & Conditions</a>
+          <a class="hover:text-primary" href="#">Privacy Policy</a>
+          <a class="hover:text-primary" href="#">Refund & Cancellation</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const openButton = document.getElementById("menuToggle");
+      const closeButton = document.getElementById("menuClose");
+      const panel = document.getElementById("mobilePanel");
+      const overlay = document.getElementById("mobileOverlay");
+
+      function setMenu(open) {
+        panel.classList.toggle("translate-x-full", !open);
+        overlay.classList.toggle("opacity-0", !open);
+        overlay.classList.toggle("pointer-events-none", !open);
+      }
+
+      openButton.addEventListener("click", () => setMenu(true));
+      closeButton.addEventListener("click", () => setMenu(false));
+      overlay.addEventListener("click", () => setMenu(false));
+    </script>
+  </body>
+</html>
